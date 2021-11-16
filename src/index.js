@@ -22,6 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/users", userRouter);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running");
 });
