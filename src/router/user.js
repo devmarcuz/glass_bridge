@@ -22,11 +22,7 @@ router.put("/update-user/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
 
-    console.log(ended, user.ended);
-
     if (ended > user.ended || !user.ended) {
-      console.log(ended, user.ended);
-
       console.log(ended > user.ended);
       const updatedUser = await User.findByIdAndUpdate(req.params.id, { ended });
       return res.status(200).json({ updatedUser });
